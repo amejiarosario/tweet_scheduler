@@ -1,0 +1,20 @@
+<h1>Edit post</h1>
+
+<form id="edit-post" name="post">
+  <div class="field">
+    <label for="message"> message:</label>
+    <input type="text" name="message" id="message" value="<%= message %>" >
+  </div>
+
+  <div class="field">
+    <label for="publish_on"> publish_on:</label>
+    <input type="text" name="publish_on" id="publish_on" value="<%= publish_on %>" >
+  </div>
+
+  <div class="actions">
+    <input type="submit" value="Update Post" />
+  </div>
+
+</form>
+
+<a href="#/index">Back</a>
