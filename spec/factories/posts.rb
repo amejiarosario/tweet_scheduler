@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :post do
-    message "MyText"
-    publish_on "2013-02-13 00:08:04"
+    sequence(:message){ |n| "post test #{n}" }
+    publish_on { Time.now }
   end
 end

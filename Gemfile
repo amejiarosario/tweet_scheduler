@@ -37,14 +37,21 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 group :test, :development do
-  gem "rspec-rails", "~> 2.0"
+  gem 'rspec-rails', '~> 2.0'
   gem 'factory_girl_rails'
 end
 
-gem "therubyracer"
-gem "less-rails"
+group :test do
+  gem 'mongoid-rspec'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'guard-rspec'
+end
+
+gem 'therubyracer'
+gem 'less-rails'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
-gem "rails-backbone"
+gem 'rails-backbone'
 
 gem 'thin'
