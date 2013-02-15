@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Tweet Scheduler" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "TweetScheduler" %></title>
     <%= csrf_meta_tags %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -44,12 +44,35 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">TweetScheduler</a>
+          <a class="brand" href="<%= root_path %>">TweetScheduler</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+              <li><a href="<%= root_path %>"><i class="icon-home"></i> Home</a></li>
+              <li class="divider-vertical"></li>
+              <li><a href="#"><i class="icon-envelope"></i> Messages</a></li>
+              <li class="divider-vertical"></li>
+              <li><a href="#"><i class="icon-signal"></i> Stats</a></li>
+            </ul>
+            <ul class="nav pull-right">
+              <li class="divider-vertical"></li>
+              <% if user_signed_in? %>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <i class="icon-user"></i> Adrian <strong class="caret"></strong>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><%= link_to raw('<i class="icon-cog"></i> Profile'), '#' %></li>
+                      <li class="divider"></li>
+                      <li><%= link_to raw('<i class="icon-off"></i> Sign Out'), '/sign_out' %></li>
+                    </ul>                
+                </li><!-- /.dropdown -->
+              <% else %>
+                <li>
+                  <a href="/auth/twitter">
+                    <%= image_tag 'twitter_signin.png' %>
+                  </a>
+                </li>
+              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -59,14 +82,17 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span3">
-          <div class="well sidebar-nav">
+          <% if content_for? :sidebar %>
+            <%= yield :sidebar %>
+          <% end %>
+          <!-- <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+              <li><%#= link_to "Link1", "/" %></li>
+              <li><%#= link_to "Link2", "/" %></li>
+              <li><%#= link_to "Link3", "/" %></li>
             </ul>
-          </div><!--/.well -->
+          </div> --><!--/.well -->
         </div><!--/span-->
         <div class="span9">
           <%= bootstrap_flash %>
@@ -75,7 +101,7 @@
       </div><!--/row-->
 
       <footer>
-        <p>&copy; <%= link_to "Adrian Mejia", "http://adrianmejia.com" %> <%= Time.now.year %></p>
+        <p style="text-align:right">&copy; <%= Time.now.year %> <%= link_to "Adrian Mejia", "http://adrianmejia.com" %> </p>
       </footer>
 
     </div> <!-- /container -->

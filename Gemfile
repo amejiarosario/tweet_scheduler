@@ -48,6 +48,11 @@ group :test do
   gem 'guard-rspec'
 end
 
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
 gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
@@ -55,3 +60,7 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'rails-backbone'
 
 gem 'thin'
+
+gem 'oj'
+gem 'twitter'
+gem 'omniauth-twitter'
