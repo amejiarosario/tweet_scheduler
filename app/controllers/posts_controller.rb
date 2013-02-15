@@ -1,8 +1,10 @@
 class PostsController < ApplicationController
+  before_filter :require_authentication
+
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = current_user.posts
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,7 +42,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(params[:post])
+    @post = current_user.posts.new(params[:post])
 
     respond_to do |format|
       if @post.save

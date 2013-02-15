@@ -7,6 +7,7 @@ class User
   field :updated_at, type: DateTime, default: ->{ Time.now }
 
   has_many :authentications, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   validate :present_username?
 

@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_authentication
-    redirect_to sign_in_path unless user_signed_in?
+    redirect_to sign_in_path, notice: 'You need to sign in first' unless user_signed_in?
   end
 
   helper_method :current_user, :user_signed_in?

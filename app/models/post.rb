@@ -8,6 +8,8 @@ class Post
   scope :expired, where(:publish_on.lte => Time.now)
   scope :ready, where(:publish_on.lte => Time.now, sent: false)
 
+  belongs_to :user
+
   def self.tweets_ready
     Post.where(:publish_on.lte => Time.now, sent: false).to_a
   end
